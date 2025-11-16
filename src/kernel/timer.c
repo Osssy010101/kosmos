@@ -2,7 +2,10 @@
 #define PIT_CH0  0x40
 #define PIT_INPUT_FREQ 1193182UL
 
-#include "PIT.h"
+#include "timer.h"
+#include "../api/kernel_functions.h"
+
+extern void asm_tick_handler();
 
 unsigned int TICKS = 0;
 
@@ -27,4 +30,13 @@ void PIT_init(unsigned int freq_hz) {
 void tick_handler(){
 	TICKS++;
 	outb(0x20, 0x20);
+}
+
+void timer_init(){
+    PIT_init(1000);
+    _intr_disable();
+    _pic_update_mask(0, 0, 0);
+    _int_reg_handler(32, 0x08, 0x80 | 0x0E, asm_tick_handler);
+    _intr_enable();
+
 }

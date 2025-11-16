@@ -6,7 +6,17 @@
 
 
 void sys_print_text(struct syscall_result* args, struct syscall_result* result){
-    _print_text(args->ebx, args->ecx, ((args->edx) & 0xFF),((args->edx >> 8) & 0xFF), args->esi, args->edi);
+
+    _print_text(
+                args->ebx,
+                args->ecx,
+                ((args->edx) & 0xFF),
+                ((args->edx >> 8) & 0xFF),
+                ((args->esi) & 0xFF),
+                ((args->esi >> 8) & 0xFF),
+                args->edi
+                );
+
 }
 
 void sys_new_line(struct syscall_result* args, struct syscall_result* result){

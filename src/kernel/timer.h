@@ -3,7 +3,7 @@
 
 extern unsigned int TICKS;
 
-void PIT_init(unsigned int freq_hz);
+void timer_init();
 void tick_handler();
 
 #endif

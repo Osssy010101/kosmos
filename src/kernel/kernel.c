@@ -7,7 +7,7 @@ const unsigned int multiboot_header[] = {
 };
 
 #include "kernel.h"
-#include "PIT.h"
+#include "timer.h"
 
 // Kernel
 #include "gdt.h"
@@ -20,8 +20,10 @@ const unsigned int multiboot_header[] = {
 #include "../libs/device.h"
 
 
-unsigned int EXECUTE_PROGRAM = 0;
+#include "../libs/asm.h"
 
+
+unsigned int EXECUTE_PROGRAM = 0;
 
 // Loop
 __attribute__((section(".kernel_loop"))) void kernel_loop(void) {
@@ -43,9 +45,9 @@ void test(){
 	struct dev_info* devs = (struct dev_info*)_get_device_info();
     for (unsigned int dev = 0; dev < _get_device_count(); dev++){
         if (devs[dev].classcode == VIRT_DISPLAY_CONTROLLER && devs[dev].subclass == VIRT_DISPLAY_VGATEXT){
-            _clear_display(dev);
-			_new_line(dev);
-            _cursor_update(dev);
+
+
+
         }
     }
 }
@@ -55,8 +57,13 @@ void kmain(void){
 
 	// GDT table init
 	gdt_init();
+
 	// Remap interrupts
 	PIC_remap();
+
+	// Init PIT, timers
+	timer_init();
+
 	// Init API
 	api_init();
 

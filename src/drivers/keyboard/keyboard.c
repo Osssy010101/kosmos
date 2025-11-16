@@ -88,23 +88,23 @@ void keyboard_handler(){
     outb(0x20, 0x20);
 }
 
-void* keyboard_get_buffer(){
+void* keyboard_get_buffer(struct dev_info* device){
     return KEYBOARD_BUFFER;
 }
 
-unsigned int keyboard_get_buffer_ptr(){
+unsigned int keyboard_get_buffer_ptr(struct dev_info* device){
     return KEYBOARD_BUFFER_PTR;
 }
 
-unsigned char keyboard_get_shift_pressed(){
+unsigned char keyboard_get_shift_pressed(struct dev_info* device){
     return KEYBOARD_SHIFT_PRESSED;
 }
 
-unsigned char keyboard_get_ctrl_pressed(){
+unsigned char keyboard_get_ctrl_pressed(struct dev_info* device){
     return KEYBOARD_CTRL_PRESSED;
 }
 
-unsigned char keyboard_get_alt_pressed(){
+unsigned char keyboard_get_alt_pressed(struct dev_info* device){
     return KEYBOARD_ALT_PRESSED;
 }
 
