@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rep_name='Operation-System'
+rep_name='kosmos'
 
 apt install make nasm gcc xorriso qemu-system texinfo build-essential bison flex git-lfs -y
 
