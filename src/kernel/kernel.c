@@ -46,7 +46,9 @@ void test(){
     for (unsigned int dev = 0; dev < _get_device_count(); dev++){
         if (devs[dev].classcode == VIRT_DISPLAY_CONTROLLER && devs[dev].subclass == VIRT_DISPLAY_VGATEXT){
 
-
+			unsigned char* text = "test";
+			unsigned int size = 4;
+			_print_text(text, size, 15, 2, 7, 0, dev);
 
         }
     }
@@ -71,7 +73,7 @@ void kmain(void){
 
 	driver_manager();
 
-	test();
+	// test();
 
 	// Endless loop
 	kernel_loop();

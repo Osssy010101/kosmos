@@ -8,6 +8,7 @@ struct dev_info{
 
     unsigned char is_pci_dev; // 0 or 1
     unsigned char is_virt_dev; // 0 or 1
+    unsigned char is_leg_dev; // 0 or 1
 
     unsigned int bus;
     unsigned int dev;
@@ -43,6 +44,22 @@ struct dev_info{
     struct driver_info* driver;
 
 };
+
+
+struct class_map{
+    unsigned int code;
+    unsigned char* name;
+};
+
+struct subclass_map{
+    unsigned int classcode;
+    unsigned int subclass;
+    unsigned char* name;
+};
+
+extern struct class_map pci_class_names[];
+
+extern struct subclass_map* pci_subclass_names[];
 
 
 enum virt_class_codes{

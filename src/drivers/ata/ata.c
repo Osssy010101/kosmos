@@ -1,6 +1,12 @@
 #define ATA_BASE 0x1F0
 
 #include "ata.h"
+#include "../../libs/device.h"
+
+
+void* ata_funcs[] = {
+
+};
 
 
 // стандартная задержка для ATA
@@ -155,5 +161,10 @@ int ata_driver_read_sector(unsigned int lba, unsigned char* buffer) {
 }
 
 int ata_driver_write_sector(){
+
+}
+
+
+int ata_init(struct dev_info* device){
 
 }

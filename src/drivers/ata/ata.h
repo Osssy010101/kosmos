@@ -1,6 +1,9 @@
 #ifndef INCL_DRIVER_ATA
 #define INCL_DRIVER_ATA
 
-int ata_driver_read_sector(unsigned int lba, unsigned char* buffer);
+extern struct dev_info;
+extern void* ata_funcs[];
+
+int ata_init(struct dev_info* device);
 
 #endif
