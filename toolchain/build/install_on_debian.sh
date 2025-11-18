@@ -1,14 +1,14 @@
 #!/bin/sh
 
-apt install make nasm gcc xorriso qemu-system texinfo build-essential bison flex git-lfs -y > /dev/null
+apt install make nasm gcc xorriso qemu-system texinfo build-essential bison flex git-lfs sudo -y > /dev/null
 
 git lfs install
 git lfs pull
 
 if [ "$(id -u)" -ne 0 ]; then
-    ./install.sh
+    sh ./install.sh
 else
-    sudo ./install.sh
+    sudo sh ./install.sh
 fi
 
 export PATH=$PATH:/opt/i386-elf
