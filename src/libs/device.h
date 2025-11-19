@@ -198,7 +198,7 @@ enum input_device_subclass {
 };
 
 enum docking_station_subclass {
-    OCK_GENERIC = 0x00,
+    DOCK_GENERIC = 0x00,
     DOCK_OTHER = 0x80
 };
 

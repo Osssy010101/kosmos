@@ -94,6 +94,114 @@ struct subclass_map pci_subclass_bridge_names[] = {
     {0, 0, 0} // маркер конца
 };
 
+struct subclass_map pci_subclass_scomm_names[] = {
+    {SIMPLE_COMMUNICATION_CONTROLLER, SCOMM_SERIAL, "SERIAL"},
+    {SIMPLE_COMMUNICATION_CONTROLLER, SCOMM_PARALLEL, "PARALLEL"},
+    {SIMPLE_COMMUNICATION_CONTROLLER, SCOMM_MULTI_SERIAL, "MULTI_SERIAL"},
+    {SIMPLE_COMMUNICATION_CONTROLLER, SCOMM_MODEM, "MODEM"},
+    {SIMPLE_COMMUNICATION_CONTROLLER, SCOMM_GPIB, "GPIB"},
+    {SIMPLE_COMMUNICATION_CONTROLLER, SCOMM_SMART_CARD, "SMART_CARD"},
+    {SIMPLE_COMMUNICATION_CONTROLLER, SCOMM_OTHER, "OTHER"},
+    {0, 0, 0} // маркер конца
+};
+
+struct subclass_map pci_subclass_sys_peripheral_names[] = {
+    {BASE_SYSTEM_PERIPHERAL, BSP_PIC, "PIC"},
+    {BASE_SYSTEM_PERIPHERAL, BSP_DMA, "DMA"},
+    {BASE_SYSTEM_PERIPHERAL, BSP_TIMER, "TIMER"},
+    {BASE_SYSTEM_PERIPHERAL, BSP_RTC, "RTC"},
+    {BASE_SYSTEM_PERIPHERAL, BSP_PCI_HOTPLUG, "PCI_HOTPLUG"},
+    {BASE_SYSTEM_PERIPHERAL, BSP_SD_HOST, "SD_HOST"},
+    {BASE_SYSTEM_PERIPHERAL, BSP_IOMMU, "IOMMU"},
+    {BASE_SYSTEM_PERIPHERAL, BSP_OTHER, "OTHER"},
+    {0, 0, 0} // маркер конца
+};
+
+struct subclass_map pci_subclass_input_device_names[] = {
+    {INPUT_DEVICE_CONTROLLER, INPUT_KEYBOARD, "KEYBOARD"},
+    {INPUT_DEVICE_CONTROLLER, INPUT_DIGITIZER, "DIGITIZER"},
+    {INPUT_DEVICE_CONTROLLER, INPUT_MOUSE, "MOUSE"},
+    {INPUT_DEVICE_CONTROLLER, INPUT_SCANNER, "SCANNER"},
+    {INPUT_DEVICE_CONTROLLER, INPUT_GAMEPORT, "GAMEPORT"},
+    {INPUT_DEVICE_CONTROLLER, INPUT_OTHER, "OTHER"},
+    {0, 0, 0} // маркер конца
+};
+
+struct subclass_map pci_subclass_docking_station_names[] = {
+    {DOCKING_STATION, DOCK_GENERIC, "GENERIC"},
+    {DOCKING_STATION, DOCK_OTHER, "OTHER"},
+    {0, 0, 0} // маркер конца
+};
+
+struct subclass_map pci_subclass_processor_names[] = {
+    {PROCESSOR, PROC_386, "386"},
+    {PROCESSOR, PROC_486, "486"},
+    {PROCESSOR, PROC_PENTIUM, "PENTIUM"},
+    {PROCESSOR, PROC_PENTIUM_PRO, "PENTIUM_PRO"},
+    {PROCESSOR, PROC_ALPHA, "ALPHA"},
+    {PROCESSOR, PROC_POWERPC, "POWERPC"},
+    {PROCESSOR, PROC_MIPS, "MIPS"},
+    {PROCESSOR, PROC_CO_PROCESSOR, "CO_PROCESSOR"},
+    {PROCESSOR, PROC_OTHER, "OTHER"},
+    {0, 0, 0} // маркер конца
+};
+
+struct subclass_map pci_subclass_serbus_names[] = {
+    {SERIAL_BUS_CONTROLLER, SERBUS_FIREWIRE, "FIREWIRE"},
+    {SERIAL_BUS_CONTROLLER, SERBUS_ACCESS, "ACCESS"},
+    {SERIAL_BUS_CONTROLLER, SERBUS_SSA, "SSA"},
+    {SERIAL_BUS_CONTROLLER, SERBUS_USB, "USB"},
+    {SERIAL_BUS_CONTROLLER, SERBUS_FIBRE_CHANNEL, "FIBRE_CHANNEL"},
+    {SERIAL_BUS_CONTROLLER, SERBUS_SMBUS, "SMBUS"},
+    {SERIAL_BUS_CONTROLLER, SERBUS_INFINIBAND, "INFINIBAND"},
+    {SERIAL_BUS_CONTROLLER, SERBUS_IPMI, "IPMI"},
+    {SERIAL_BUS_CONTROLLER, SERBUS_SERCOS, "SERCOS"},
+    {SERIAL_BUS_CONTROLLER, SERBUS_CANBUS, "CANBUS"},
+    {SERIAL_BUS_CONTROLLER, SERBUS_OTHER, "OTHER"},
+    {0, 0, 0} // маркер конца
+};
+
+struct subclass_map pci_subclass_wireless_names[] = {
+    {WIRELESS_CONTROLLER, WIRELESS_IRDA, "IRDA"},
+    {WIRELESS_CONTROLLER, WIRELESS_CONSUMER_IR, "CONSUMER_IR"},
+    {WIRELESS_CONTROLLER, WIRELESS_RF, "RF"},
+    {WIRELESS_CONTROLLER, WIRELESS_BLUETOOTH, "BLUETOOTH"},
+    {WIRELESS_CONTROLLER, WIRELESS_BROADBAND, "BROADBAND"},
+    {WIRELESS_CONTROLLER, WIRELESS_ETHERNET_A, "ETHERNET_A"},
+    {WIRELESS_CONTROLLER, WIRELESS_ETHERNET_B, "ETHERNET_B"},
+    {WIRELESS_CONTROLLER, WIRELESS_OTHER, "OTHER"},
+    {0, 0, 0} // маркер конца
+};
+
+struct subclass_map pci_subclass_intelligent_names[] = {
+    {INTELLIGENT_CONTROLLER, INTELLIGENT_I20, "I20"},
+    {0, 0, 0} // маркер конца
+};
+
+
+struct subclass_map pci_subclass_satcomm_names[] = {
+    {SATELLITE_COMMUNICATION_CONTROLLER, SATCOMM_TV, "TV"},
+    {SATELLITE_COMMUNICATION_CONTROLLER, SATCOMM_AUDIO, "AUDIO"},
+    {SATELLITE_COMMUNICATION_CONTROLLER, SATCOMM_VOICE, "VOICE"},
+    {SATELLITE_COMMUNICATION_CONTROLLER, SATCOMM_DATA, "DATA"},
+    {0, 0, 0} // маркер конца
+};
+
+struct subclass_map pci_subclass_encryption_names[] = {
+    {ENCRYPTION_CONTROLLER, ENCRYPTION_NET_COMP, "NET_COMP"},
+    {ENCRYPTION_CONTROLLER, ENCRYPTION_ENTERTAIN, "ENTERTAIN"},
+    {ENCRYPTION_CONTROLLER, ENCRYPTION_OTHER, "OTHER"},
+    {0, 0, 0} // маркер конца
+};
+
+struct subclass_map pci_subclass_signproccs_names[] = {
+    {SIGNAL_PROCESSING_CONTROLLER, SIGPROC_DPIO_MODULES, "DPIO_MODULES"},
+    {SIGNAL_PROCESSING_CONTROLLER, SIGPROC_PERF_COUNTERS, "PERF_COUNTERS"},
+    {SIGNAL_PROCESSING_CONTROLLER, SIGPROC_COMM_SYNC, "COMM_SYNC"},
+    {SIGNAL_PROCESSING_CONTROLLER, SIGPROC_SIG_PROC_MGMT, "SIG_PROC_MGMT"},
+    {SIGNAL_PROCESSING_CONTROLLER, SIGPROC_OTHER, "OTHER"},
+    {0, 0, 0} // маркер конца
+};
 
 struct subclass_map* pci_subclass_names[] = {
     pci_subclass_storage_names,
@@ -102,5 +210,17 @@ struct subclass_map* pci_subclass_names[] = {
     pci_subclass_multimedia_names,
     pci_subclass_memory_names,
     pci_subclass_bridge_names,
-    0
+    pci_subclass_scomm_names,
+    pci_subclass_sys_peripheral_names,
+    pci_subclass_input_device_names,
+    pci_subclass_docking_station_names,
+    pci_subclass_processor_names,
+    pci_subclass_serbus_names,
+    pci_subclass_wireless_names,
+    pci_subclass_intelligent_names,
+    pci_subclass_satcomm_names,
+    pci_subclass_encryption_names,
+    pci_subclass_signproccs_names,
+
+    0 // маркер конца
 };
