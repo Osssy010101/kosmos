@@ -1,9 +1,11 @@
 FROM debian:latest
 WORKDIR /kosmos_os
 
-RUN apt update -y > /dev/null && apt install git -y > /dev/null
-RUN git clone --branch build_in_docker https://github.com/Osssy010101/kosmos.git
+COPY ./src /kosmos_os/src
+COPY ./toolchain /kosmos_os/toolchain
+COPY ./iso /kosmos_os/iso
+COPY ./Makefile /kosmos_os/Makefile
 
-WORKDIR /kosmos_os/kosmos/
-RUN chmod +x ./toolchain/build/install_on_debian.sh && chmod +x ./toolchain/build/install.sh
-RUN ./toolchain/build/install_on_debian.sh 
+WORKDIR /kosmos_os/toolchain/build/
+RUN chmod +x install_on_debian.sh
+RUN ./install_on_debian.sh
