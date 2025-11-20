@@ -100,10 +100,10 @@ run:
 	-drive file=output/os.iso,format=raw,if=ide,index=1,media=cdrom
 
 docker_build:
-	docker build --no-cache -t os/kosmos-build-in-debian . 
+	docker build -t os/kosmos-build-in-debian . 
 
 docker_build_log:
-	docker build --no-cache -t os/kosmos-build-in-debian . > build_log.txt 2> build_errors.txt
+	docker build -t os/kosmos-build-in-debian . > build_log.txt 2> build_errors.txt
 
 # ctn = container
 docker_run_ctn:
