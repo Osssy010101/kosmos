@@ -1,7 +1,7 @@
 # Собираем все драйверы верхнего уровня
-DRIVERS_SRC := $(wildcard *.c) $(wildcard *.S)
+DRIVERS_SRC := $(wildcard *.c) $(wildcard *.asm)
 DRIVERS_OBJ := $(DRIVERS_SRC:.c=.o)
-DRIVERS_OBJ := $(DRIVERS_OBJ:.S=.o)
+DRIVERS_OBJ := $(DRIVERS_OBJ:.asm=.o)
 
 # Находим директории драйверов
 DRIVER_DIRS := $(filter-out .,$(wildcard */))
@@ -22,7 +22,7 @@ all: $(DRIVERS_OBJ) drivers
 	mkdir -p $(DRIVER_OUTPUT)
 	$(CC) $(CFLAGS) -c $< -o $(DRIVER_OUTPUT)$@
 
-%.o: %.S
+%.o: %.asm
 	mkdir -p $(DRIVER_OUTPUT)
 	$(NS) $(NSFLAGS) $< -o $(DRIVER_OUTPUT)$@
 
