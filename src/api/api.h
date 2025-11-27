@@ -4,7 +4,8 @@
 #define INCL_API
 
 
-struct syscall_result {
+// Структура предназначенная для хранения регистров
+struct registers_struct {
     unsigned int eax;
     unsigned int ebx;
     unsigned int ecx;

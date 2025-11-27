@@ -7,7 +7,11 @@
 
 void api_handler(){
 
-    struct syscall_result args;
+    //
+    // Получение аргументов из регистров
+    //
+
+    struct registers_struct args;
 
     asm volatile(
         "movl %%eax, %0\n"
@@ -26,9 +30,13 @@ void api_handler(){
         : "memory"
     );
 
-    unsigned int syscall_number = args.eax;
+    unsigned int syscall_number = args.eax; // Получаем номер системного вызова
 
-    struct syscall_result result;
+    //
+    // Вызов определённой функции исходя по номеру системного вызова
+    //
+
+    struct registers_struct result; // Здесь будет храниться результат
 
     switch(syscall_number){
 
@@ -114,7 +122,11 @@ void api_handler(){
 
     }
 
-    outb(0x20, 0x20);
+    outb(0x20, 0x20); // Обработали прерывание (системный вызов)
+
+    //
+    // Записываем результат в регистры
+    //
 
     asm volatile(
         "movl %0, %%eax\n"
