@@ -13,7 +13,7 @@ struct byte_split_struct{
 void string_turn_over(unsigned char* string, short size, unsigned char* result);
 
 // Int to string. Число в строку
-void itos(long i, unsigned char* ret);
+int itos(long i, unsigned char* ret);
 
 // Проверка строки на то, является ли она числом
 char is_digit(char* string);

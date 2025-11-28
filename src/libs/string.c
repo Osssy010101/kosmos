@@ -28,19 +28,18 @@ void string_turn_over(unsigned char* string, short size, unsigned char* result){
 
 
 // Int to string. Число в строку
-void itos(long i, unsigned char* ret){
+int itos(long i, unsigned char* ret){
     long j = i;
     unsigned char result[21];
-    char r_ptr = 0;
 
      if (i == 0){
          ret[0] = '0';
          ret[1] = '\0';
-         return;
+         return 1;
     }
 
     char string[20];
-    char s_ptr = 0;
+    int s_ptr = 0;
 
     if (i < 0) i = i * -1;
 
@@ -58,16 +57,20 @@ void itos(long i, unsigned char* ret){
     if (j < 0){
         ret[0] = '-';
 
-        for (int f = 0; f < 21; f++){
+        for (int f = 0; f < s_ptr+1; f++){
             ret[f+1] = result[f];
         }
+        ret[s_ptr+1] = '\0';
+        return s_ptr+1;
     }
     else{
-         for (int f = 0; f < 21; f++){
+         for (int f = 0; f < s_ptr; f++){
             ret[f] = result[f];
         }
+        ret[s_ptr] = '\0';
+        return s_ptr;
     }
-    return;
+
 }
 
 
