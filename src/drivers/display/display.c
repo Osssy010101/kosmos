@@ -145,5 +145,6 @@ void display_set_display_cursor_pos_y(struct dev_info* device, unsigned char y){
 }
 
 int display_init(struct dev_info* device){
+    display_clear(device);
     return 1;
 }

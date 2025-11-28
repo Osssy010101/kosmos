@@ -68,11 +68,14 @@ void driver_manager(){
 
     for (unsigned int device_index = 0; device_index < DEVICE_COUNT; device_index++){
 
-        struct driver_info* driver;
-        int dr_get_result = driver_get(&DEVICES_INFO[device_index], &driver);
-        if (dr_get_result == 0)
-            driver_registration(driver, &DEVICES_INFO[device_index]);
+        struct dev_info* device = &DEVICES_INFO[device_index];
 
+        if (device->driver == 0){
+            struct driver_info* driver;
+            int dr_get_result = driver_get(device, &driver);
+            if (dr_get_result == 0)
+                driver_registration(driver, device);
+        }
     }
 
 }

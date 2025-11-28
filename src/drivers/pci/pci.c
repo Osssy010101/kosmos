@@ -207,6 +207,8 @@ void pci_device_registration(unsigned int bus, unsigned int dev, unsigned int fu
     device.bar4 = header.bar4;
     device.bar5 = header.bar5;
 
+    device.driver = 0;
+
     device_registration(&device);
 
 }

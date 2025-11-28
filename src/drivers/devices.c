@@ -15,7 +15,7 @@ void device_log(struct dev_info* device) {
     unsigned char x = _get_display_cursor_pos_x(dev);
     unsigned char y = _get_display_cursor_pos_y(dev);
 
-    unsigned char type_fcolor = 7;
+    unsigned char type_fcolor = 2;
     unsigned char tire_fcolor = 7;
     unsigned char class_fcolor = 7;
     unsigned char subclass_fcolor = 7;
@@ -105,22 +105,21 @@ void device_log(struct dev_info* device) {
 void device_registration(struct dev_info* device){
     DEVICES_INFO[DEVICE_COUNT] = *device;
     DEVICE_COUNT++;
-
-    // Если устройство первое, т.е дисплей, то сразу же ищем ему драйвер
-    if (DEVICE_COUNT == 1)
-        driver_manager();
-    device_log(device);
+    if(
+        DEVICE_COUNT == 1 &&
+        DEVICES_INFO[0].classcode == VIRT_DISPLAY_CONTROLLER &&
+        DEVICES_INFO[0].subclass == VIRT_DISPLAY_VGATEXT
+    ) driver_manager();  // устройство дисплей => сразу же ищем ему драйвер (для логов)
+    if (
+        DEVICE_COUNT > 0 &&
+        DEVICES_INFO[0].classcode == VIRT_DISPLAY_CONTROLLER &&
+        DEVICES_INFO[0].subclass == VIRT_DISPLAY_VGATEXT
+    ) device_log(device); // если есть устройство дисплей, то выводим логи
 }
 
 
 //виртуальные устройства
 void devices_virt(){
-
-}
-
-
-void devices_legacy_find(){
-
 
     // display vga text mode
     struct dev_info dev_display;
@@ -130,9 +129,14 @@ void devices_legacy_find(){
 
     dev_display.classcode = VIRT_DISPLAY_CONTROLLER;
     dev_display.subclass = VIRT_DISPLAY_VGATEXT;
+    dev_display.driver = 0;
 
     device_registration(&dev_display);
 
+}
+
+
+void devices_legacy_find(){
 
     // keyboard
     struct dev_info dev_keyb;
@@ -142,6 +146,7 @@ void devices_legacy_find(){
 
     dev_keyb.classcode = VIRT_KEYBOARD_CONTROLLER;
     dev_keyb.subclass = VIRT_KEYBOARD_LDEV;
+    dev_keyb.driver = 0;
 
     device_registration(&dev_keyb);
 
@@ -152,10 +157,8 @@ int devices_find(){
 
     unsigned int old_device_count = DEVICE_COUNT;
 
-    devices_legacy_find();
-
     devices_virt();
-
+    devices_legacy_find();
     pci_find_devices();
 
     // Возвращает то, сколько нашёл устройств
